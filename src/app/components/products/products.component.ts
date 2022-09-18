@@ -37,15 +37,15 @@ export class ProductsComponent implements OnInit {
       productName: 'White Basmathi Rice',
       createdDate: 'Jan 29, 2020',
       quantity: 100,
-      unitPrice: 'Rs. 400',
-      productDescription: 'White Basmathi Rice imported from pakistan',
+      unitPrice: '400',
+      productDescription: 'White Basmathi Rice imported from pakistan.',
     },
     {
       productId: '002',
       productName: 'Flour',
       createdDate: 'Jan 29, 2020',
       quantity: 50,
-      unitPrice: 'Rs. 190',
+      unitPrice: '190',
       productDescription: 'Super Fine Whole grain general Purpose flour',
     },
 
@@ -54,7 +54,7 @@ export class ProductsComponent implements OnInit {
       productName: 'sugar',
       createdDate: 'Jan 29, 2020',
       quantity: 1200,
-      unitPrice: 'Rs. 200',
+      unitPrice: '200',
       productDescription: 'White sugar manufactured by Palwatte Factory',
     },
     {
@@ -62,7 +62,7 @@ export class ProductsComponent implements OnInit {
       productName: 'Dhal',
       createdDate: 'Jan 29, 2020',
       quantity: 10,
-      unitPrice: 'Rs. 200',
+      unitPrice: '200',
       productDescription: 'Imported mysoor dhal from India',
     },
   ];
