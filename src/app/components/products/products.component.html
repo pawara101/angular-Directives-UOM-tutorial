@@ -61,7 +61,13 @@
             <td>Imported mysoor dhal from India</td>
             <td>Jan 29, 2020</td>
             <td>Rs. 200</td>
-            <td>10</td>
+            <td
+              [ngStyle]="
+                isLowInventoryDhal ? { 'background-color': 'blue' } : {}
+              "
+            >
+              {{ getDhalStorage() }}
+            </td>
             <td>
               <i class="fa fa-eye icon"></i>
               <i class="fa fa-pencil-square-o icon"></i>
