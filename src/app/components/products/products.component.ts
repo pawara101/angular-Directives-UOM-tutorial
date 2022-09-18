@@ -15,6 +15,10 @@ export class ProductsComponent implements OnInit {
 
   public isLowInventoryDhal: any;
   public dhalQty: any;
+
+  public rowIndex!: number;
+  showAddProduct!: boolean;
+
   getRiceStorage() {
     this.riceQty = 350;
     if (this.riceQty < 200 && this.riceQty >= 50) {
@@ -66,4 +70,16 @@ export class ProductsComponent implements OnInit {
       productDescription: 'Imported mysoor dhal from India',
     },
   ];
+
+  public selectProduct(selectedRow: number) {
+    this.rowIndex = selectedRow;
+  }
+
+  showAddProducts() {
+    this.showAddProduct = true;
+  }
+
+  hideAddProducts() {
+    this.showAddProduct = false;
+  }
 }
