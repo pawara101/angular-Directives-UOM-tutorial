@@ -6,10 +6,9 @@ import { ProductService } from '../../service/product.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit {
-
   productFrom = this.fb.group({
     productName: ['', Validators.required],
     description: ['', Validators.required],
@@ -21,18 +20,28 @@ export class AddProductComponent implements OnInit {
     unitPrice: ['', [Validators.required, Validators.min(1)]],
     quantity: ['', [Validators.required, Validators.min(50)]],
   });
-  constructor(private fb: FormBuilder,
-    private productService: ProductService) { }
 
-  ngOnInit(): void {
-  }
+  isDataUploading = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private productService: ProductService
+  ) {}
+
+  ngOnInit(): void {}
 
   get f() {
     return this.productFrom.controls;
   }
 
-  onSubmit(){
-    const values = this.productFrom.value as unknown as Product;
+  onSubmit() {
+    const values = this.productFrom.value as Product;
+    values.createdDate = new Date().toDateString();
+    this.isDataUploading = true;
+    this.productService.addProduct(values as Product).subscribe((res) => {
+      debugger;
+      this.isDataUploading = false;
+      this.productFrom.reset();
+    });
   }
-
 }

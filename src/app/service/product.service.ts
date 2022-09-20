@@ -6,22 +6,19 @@ import { Product } from '../model/product.model';
 import { AddProductResponse } from '../model/add-product-response.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
+  private baseUrl = 'https://host1.open.uom.lk/';
 
-  baseUrl = 'https://host1.open.uom.lk:8000/';
-
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-
   addProduct(product: Product): Observable<AddProductResponse> {
-    return this.http.post<AddProductResponse>
-    (
+    return this.http.post<AddProductResponse>(
       this.baseUrl + 'api/products',
       product,
       this.httpOptions
@@ -31,8 +28,4 @@ export class ProductService {
   getProducts(): Observable<ProductResponse> {
     return this.http.get<ProductResponse>(this.baseUrl + 'api/products');
   }
-
-
-
-
 }
