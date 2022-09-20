@@ -6,14 +6,15 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ContentLimitterPipe } from './pipe/content-limitter.pipe';
 import { AddProductComponent } from './components/add-product/add-product.component';
-import { Htttclient}
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     ContentLimitterPipe,
-    AddProductComponent
+    AddProductComponent,
+    HttpClient
   ],
   imports: [
     BrowserModule,
