@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../model/product.model';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-products',
@@ -7,33 +8,14 @@ import { Product } from '../../model/product.model';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-
-  public isLowInventory: any;
-  public riceQty: any;
-
-  public isLowInventoryDhal: any;
-  public dhalQty: any;
-
   public rowIndex!: number;
   showAddProduct!: boolean;
+  isLoading: boolean = false;
 
-  getRiceStorage() {
-    this.riceQty = 350;
-    if (this.riceQty < 200 && this.riceQty >= 50) {
-      this.isLowInventory = true;
-    }
-    return this.riceQty;
-  }
+  constructor(private productService: ProductService) {}
 
-  getDhalStorage() {
-    this.dhalQty = 100;
-    if (this.dhalQty < 200 && this.dhalQty >= 50) {
-      this.isLowInventoryDhal = true;
-    }
-    return this.dhalQty;
+  ngOnInit(): void {
+    this.getProducts();
   }
   public products: Product[] = [];
 
@@ -47,5 +29,17 @@ export class ProductsComponent implements OnInit {
 
   hideAddProducts() {
     this.showAddProduct = false;
+  }
+
+  refresh() {
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.isLoading = true;
+    this.productService.getProducts().subscribe((res) => {
+      this.products = res.data;
+      this.isLoading = false;
+    });
   }
 }
